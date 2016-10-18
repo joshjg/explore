@@ -1,0 +1,81 @@
+.root {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  display: flex;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  flex: 1.5;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.mapContainer {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map {
+  height: 280px;
+}
+
+.address {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.backButton {
+  position: absolute;
+  display: inline;
+  z-index: 99;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.header {
+  display: flex;
+}
+
+.logoContainer {
+  max-width: 25%;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 100%;
+}
+
+.headerText {
+
+}
+
+.title {
+  margin-top: 0;
+}
+
+.description {
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.eventList {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}

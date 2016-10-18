@@ -1,0 +1,14 @@
+@import "~normalize.css/normalize.css";
+
+button,
+html [type="button"] {
+  -webkit-appearance: none;
+}
+
+html {
+  font-family: Roboto, sans-serif;
+}
+
+body {
+  background-color: #ecf0f1;
+}

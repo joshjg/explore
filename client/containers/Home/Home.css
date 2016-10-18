@@ -1,0 +1,12 @@
+.map {
+  height: calc(100vh - 64px);
+}
+
+.filterPanel {
+  position: fixed;
+  width: 250px;
+  height: 265px;
+  bottom: 10%;
+  right: 5%;
+  overflow: scroll;
+}

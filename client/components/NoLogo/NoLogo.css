@@ -1,0 +1,12 @@
+.root {
+  display: inline-block;
+  height: 75px;
+  width: 100px;
+  color: #DDD;
+  font-family: Roboto, sans-serif;
+  border: 1px solid #DDD;
+  text-align: center;
+  line-height: 75px;
+  vertical-align: middle;
+  margin-right: 20px;
+}

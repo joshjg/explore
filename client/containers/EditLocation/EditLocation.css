@@ -1,0 +1,37 @@
+.root {
+  display: flex;
+  flex-flow: row wrap;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 40px;
+}
+
+.col {
+  flex: 1;
+}
+
+.button {
+  width: 100%;
+}
+
+.fileUpload {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.logoThumb {
+  height: 75px;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+.errorText {
+  color: #C00;
+}

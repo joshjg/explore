@@ -6,8 +6,6 @@ import bcrypt from 'bcrypt';
 import { Photo, Event, Location, User } from './models';
 import { userCanCreate } from './middleware';
 
-const prefix = process.env.NODE_ENV === 'development' ? '' : '/api';
-
 const userIsOwner = (user, location) => (
   !!user
     && !!location
@@ -18,6 +16,7 @@ const userIsOwner = (user, location) => (
 const userIsAdmin = user => (user && user.admin);
 
 export default (server, passport) => {
+  const prefix = process.env.NODE_ENV === 'development' ? '' : '/api';
   /**
    * AUTH
    */

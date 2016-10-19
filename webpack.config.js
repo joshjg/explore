@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'staging') {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
-        GOOGLE_MAPS_KEY: process.env.GOOGLE_MAPS_KEY,
+        GOOGLE_MAPS_KEY: JSON.stringify(process.env.GOOGLE_MAPS_KEY),
       },
     }),
     new webpack.optimize.UglifyJsPlugin({
@@ -63,7 +63,7 @@ if (process.env.NODE_ENV === 'staging') {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
-        GOOGLE_MAPS_KEY: process.env.GOOGLE_MAPS_KEY,
+        GOOGLE_MAPS_KEY: JSON.stringify(process.env.GOOGLE_MAPS_KEY),
       },
     }),
     new HtmlWebpackPlugin({
@@ -76,7 +76,7 @@ if (process.env.NODE_ENV === 'staging') {
         'https://maps.googleapis.com/maps/api/js?key=AIzaSyDTFx49FCr35S2XQI1nJbDtxaV4GtFQJo4&libraries=places',
       ],
     }),
-    new FaviconsWebpackPlugin('./client/assets/favicon.png'),
+    // new FaviconsWebpackPlugin('./client/assets/favicon.png'),
   ];
 }
 

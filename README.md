@@ -1,4 +1,4 @@
-# Explore
+![logo](http://i.imgur.com/BFiKiic.png)
 
 Explore Montgomery County's 93,000-acre Agricultural Reserve with this interactive resource. Landowners can sign up to manage their own content, including photos, upcoming events, and general details. Users are able to view locations by type (farms, shopping, history, art, etc.) on the map and click markers to go to their respective pages.
 

@@ -3,6 +3,7 @@ import {
   ADD_CATEGORY,
   DELETE_CATEGORY,
   NEW_LOCATION_ERROR,
+  NEW_LOCATION_SUCCESS,
 } from './constants';
 
 const reducer = (state = {
@@ -38,6 +39,11 @@ const reducer = (state = {
       return {
         ...state,
         serverError: 'Error processing your request, please make sure you are logged in and try again.',
+      };
+    case NEW_LOCATION_SUCCESS:
+      return {
+        ...state,
+        locationPickerOpen: false,
       };
     default:
       return state;

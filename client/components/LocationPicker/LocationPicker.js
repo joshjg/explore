@@ -1,5 +1,4 @@
 import React from 'react';
-import cssModule from 'react-css-modules';
 import FlatButton from 'material-ui/FlatButton';
 import GoogleMap from 'google-map-react';
 import Dialog from 'material-ui/Dialog';
@@ -26,8 +25,8 @@ const LocationPicker = props => (
     ]}
   >
     <div>Zoom in and click to place a marker as precisely as you can.</div>
-    <small styleName="errorText">{props.errorText}</small>
-    <div styleName="map">
+    <small className={styles.errorText}>{props.errorText}</small>
+    <div className={styles.map}>
       <GoogleMap
         /* options={() => ({ styles: mapStyle })}*/
         defaultCenter={{ lat: 39.153559, lng: -77.270965 }}
@@ -58,4 +57,4 @@ LocationPicker.defaultProps = {
   open: false,
 };
 
-export default cssModule(LocationPicker, styles);
+export default LocationPicker;

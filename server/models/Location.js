@@ -11,7 +11,7 @@ export default class Location extends Model {
       owners: {
         type: 'array',
         items: {
-          type: 'string',
+          type: 'number',
         },
       },
       name: { type: 'string' },
@@ -33,10 +33,10 @@ export default class Location extends Model {
           zip: { type: 'string' },
         },
       },
-      email: { type: 'string' },
-      website: { type: 'string' },
-      contactName: { type: 'string' },
-      phone: { type: 'string' },
+      email: { type: ['string', 'null'] },
+      website: { type: ['string', 'null'] },
+      contactName: { type: ['string', 'null'] },
+      phone: { type: ['string', 'null'] },
     },
   };
   static relationMappings = {

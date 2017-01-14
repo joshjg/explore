@@ -1,21 +1,27 @@
+/* eslint-disable react/jsx-indent-props, react/jsx-closing-bracket-location */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import GoogleMap from 'google-map-react';
 
 import Marker from '../../components/Marker';
 import FilterPanel from '../../components/FilterPanel';
+import FilterButton from '../../components/FilterButton';
 // import mapStyle from './mapStyle.json';
 import styles from './Home.css';
 import { FETCH_LOCATIONS_REQUEST } from './constants';
-import { setCategoryVisibility } from './actions';
+import { setCategoryVisibility, showFilter, hideFilter } from './actions';
 
 
 class Home extends React.Component {
   static propTypes = {
     locations: React.PropTypes.arrayOf(React.PropTypes.object),
     categories: React.PropTypes.objectOf(React.PropTypes.bool),
+    filterVisible: React.PropTypes.bool,
     requestLocations: React.PropTypes.func,
     handleCheck: React.PropTypes.func,
+    showFilter: React.PropTypes.func,
+    hideFilter: React.PropTypes.func,
   };
 
   constructor(props) {
@@ -50,22 +56,26 @@ class Home extends React.Component {
           {this.props.locations.map(location => (
             location.categories && this.locationIsVisible(location)
             ? <Marker
-              key={location.id}
-              lat={location.lat}
-              lng={location.lng}
-              category={location.categories ? location.categories[0] : 'produce'}
-              tooltip
-              location={location}
-            />
+                key={location.id}
+                lat={location.lat}
+                lng={location.lng}
+                category={location.categories ? location.categories[0] : 'produce'}
+                tooltip
+                location={location}
+              />
             : null
           ))}
         </GoogleMap>
       </div>
-      <FilterPanel
-        className={styles.filterPanel}
-        values={this.props.categories}
-        onCheck={this.props.handleCheck}
-      />
+      {this.props.filterVisible
+        ? <FilterPanel
+            className={styles.filterPanel}
+            values={this.props.categories}
+            onCheck={this.props.handleCheck}
+            onClickClose={this.props.hideFilter}
+          />
+        : <FilterButton onClick={this.props.showFilter} />
+      }
     </div>
   );
 }
@@ -73,11 +83,14 @@ class Home extends React.Component {
 const mapStateToProps = state => ({
   locations: state.home.locations,
   categories: state.home.categories,
+  filterVisible: state.home.filterVisible,
 });
 
 const mapDispatchToProps = dispatch => ({
   requestLocations: () => dispatch({ type: FETCH_LOCATIONS_REQUEST }),
   handleCheck: (target, value) => dispatch(setCategoryVisibility(target, value)),
+  showFilter: () => dispatch(showFilter()),
+  hideFilter: () => dispatch(hideFilter()),
 });
 
 export default connect(

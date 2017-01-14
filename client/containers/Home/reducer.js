@@ -1,4 +1,9 @@
-import { FETCH_LOCATIONS_SUCCESS, SET_CATEGORY_VISIBILITY } from './constants';
+import {
+  FETCH_LOCATIONS_SUCCESS,
+  SET_CATEGORY_VISIBILITY,
+  SHOW_FILTER,
+  HIDE_FILTER,
+} from './constants';
 
 const reducer = (state = {
   locations: [],
@@ -16,6 +21,7 @@ const reducer = (state = {
     shopping: true,
     vineyard: true,
   },
+  filterVisible: false,
 }, action) => {
   switch (action.type) {
     case FETCH_LOCATIONS_SUCCESS:
@@ -30,6 +36,16 @@ const reducer = (state = {
           ...state.categories,
           [action.target]: action.value,
         },
+      };
+    case SHOW_FILTER:
+      return {
+        ...state,
+        filterVisible: true,
+      };
+    case HIDE_FILTER:
+      return {
+        ...state,
+        filterVisible: false,
       };
     default:
       return state;

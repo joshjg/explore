@@ -1,5 +1,4 @@
 import React from 'react';
-import cssModule from 'react-css-modules';
 import Paper from 'material-ui/Paper';
 import Subheader from 'material-ui/Subheader';
 import { List, ListItem } from 'material-ui/List';
@@ -11,8 +10,14 @@ import MediaQuery from 'react-responsive';
 import styles from './FilterPanel.css';
 import { categories } from '../../constants';
 
-const FilterPanel = ({ values, onCheck, ...others }) => (
+const FilterPanel = ({ values, onCheck, onClickClose, ...others }) => (
   <Paper {...others}>
+    <div
+      onClick={onClickClose}
+      className={styles.close}
+    >
+      &times;
+    </div>
     <List>
       <Subheader>Filter by category</Subheader>
       {categories.map(cat => (
@@ -48,6 +53,7 @@ const ResponsiveFilterPanel = props => (
 FilterPanel.propTypes = {
   values: React.PropTypes.objectOf(React.PropTypes.bool),
   onCheck: React.PropTypes.func,
+  onClickClose: React.PropTypes.func,
 };
 
-export default FilterPanel; // cssModule(FilterPanel, styles);
+export default FilterPanel;

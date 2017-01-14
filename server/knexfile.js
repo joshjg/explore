@@ -16,9 +16,9 @@ module.exports = {
   production: {
     client: 'pg',
     connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password',
+      database: 'exploremoco',
+      user: 'exploremoco',
+      password: process.env.DB_PASSWORD,
     },
     pool: {
       min: 2,
@@ -27,6 +27,7 @@ module.exports = {
     migrations: {
       tableName: 'knex_migrations',
     },
+    useNullAsDefault: true,
   },
 
 };

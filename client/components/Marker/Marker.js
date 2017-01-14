@@ -1,5 +1,4 @@
 import React from 'react';
-import cssModule from 'react-css-modules';
 import ReactTooltip from 'react-tooltip';
 import { Link } from 'react-router';
 import styles from './Marker.css';
@@ -33,27 +32,27 @@ const markers = {
 };
 
 const Marker = props => (
-  <div styleName="root">
+  <div className={styles.root}>
     {props.tooltip && props.location
       ? <span>
-        <Link to={`/locations/${props.location.id}`}>
-          <img
-            src={markers[props.category]}
-            styleName="marker"
-            alt="marker"
-            data-tip
-            data-for={props.location ? props.location.id.toString() : null}
-          />
-        </Link>
-        <ReactTooltip
-          id={props.location.id.toString()}
-          effect="solid"
-        >
-          <h3>{props.location.name}</h3>
-          <p>{props.location.description}</p>
-        </ReactTooltip>
-      </span>
-      : <img src={markers[props.category]} styleName="marker" alt="marker" />
+          <Link to={`/locations/${props.location.id}`}>
+            <img
+              src={markers[props.category]}
+              className={styles.marker}
+              alt="marker"
+              data-tip
+              data-for={props.location ? props.location.id.toString() : null}
+            />
+          </Link>
+          <ReactTooltip
+            id={props.location.id.toString()}
+            effect="solid"
+          >
+            <h3>{props.location.name}</h3>
+            <p>{props.location.description}</p>
+          </ReactTooltip>
+        </span>
+      : <img src={markers[props.category]} className={styles.marker} alt="marker" />
     }
   </div>
 );
@@ -73,4 +72,4 @@ Marker.defaultProps = {
   tooltip: false,
 };
 
-export default cssModule(Marker, styles);
+export default Marker;

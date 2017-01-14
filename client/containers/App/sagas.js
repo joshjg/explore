@@ -1,5 +1,4 @@
-import { takeEvery } from 'redux-saga';
-import { call, put, fork } from 'redux-saga/effects';
+import { call, put, fork, takeEvery } from 'redux-saga/effects';
 import {
   AUTH_REQUEST,
   AUTH_SUCCESS,

@@ -9,6 +9,7 @@ import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import MediaQuery from 'react-responsive';
 
 import Marker from '../../components/Marker';
 import EventList from '../../components/EventList';
@@ -106,31 +107,34 @@ class Location extends React.Component {
               <Marker lat={this.props.lat} lng={this.props.lng} />
             </GoogleMap>
           </div>
-          {this.props.address
+          {this.props.address && this.props.address.street
             ? <div className={styles.address}>
-              {this.props.address.street}<br />
-              {this.props.address.city}{', MD  '}{this.props.address.zip}
-            </div>
+                {this.props.address.street}<br />
+                {this.props.address.city}{', MD  '}{this.props.address.zip}
+              </div>
             : null
           }
         </Paper>
         {this.props.events && this.props.events.length > 0
           ? <Paper className={styles.eventList}>
-            <EventList
-              events={this.props.events}
-              canDelete={this.userCanEdit()}
-              onClickDelete={id => this.props.promptDelete('event', id)}
-            />
-          </Paper>
+              <EventList
+                events={this.props.events}
+                canDelete={this.userCanEdit()}
+                onClickDelete={id => this.props.promptDelete('event', id)}
+              />
+            </Paper>
           : null
         }
       </div>
 
       <div className={styles.right}>
         <div className={styles.header}>
-          <div className={styles.logoContainer}>
-            <img src={this.props.logo} alt="logo" className={styles.logo} />
-          </div>
+          {this.props.logo
+            ? <div className={styles.logoContainer}>
+                <img src={this.props.logo} alt="logo" className={styles.logo} />
+              </div>
+            : null
+          }
           <div className={styles.headerText}>
             <h1 className={styles.title}>{this.props.name}</h1>
             <div className={styles.description}>
@@ -145,30 +149,41 @@ class Location extends React.Component {
         </div>
         {this.userCanEdit()
           ? <div className={styles.buttons}>
-            <RaisedButton
-              label="Edit location"
-              primary
-              containerElement={<Link to={`/locations/${this.props.params.id}/edit`} />}
-            />
-            <RaisedButton
-              label="Add an event"
-              primary
-              onTouchTap={() => this.props.toggleActive('addEvent')}
-            />
-            <RaisedButton
-              label="Add a photo"
-              primary
-              onTouchTap={() => this.props.toggleActive('addPhoto')}
-            />
-          </div>
+              <RaisedButton
+                label="Edit info"
+                primary
+                containerElement={<Link to={`/locations/${this.props.params.id}/edit`} />}
+              />
+              <RaisedButton
+                label="+ event"
+                primary
+                onTouchTap={() => this.props.toggleActive('addEvent')}
+              />
+              <RaisedButton
+                label="+ photo"
+                primary
+                onTouchTap={() => this.props.toggleActive('addPhoto')}
+              />
+            </div>
           : null
         }
         {this.props.photos && this.props.photos.length > 0
-          ? <PhotoList
-            photos={this.props.photos}
-            canDelete={this.userCanEdit()}
-            onClickDelete={id => this.props.promptDelete('photo', id)}
-          />
+          ? <MediaQuery maxWidth={600}>
+              {matches => matches
+              ? <PhotoList
+                  rows={2}
+                  photos={this.props.photos}
+                  canDelete={this.userCanEdit()}
+                  onClickDelete={id => this.props.promptDelete('photo', id)}
+                />
+              : <PhotoList
+                  rows={3}
+                  photos={this.props.photos}
+                  canDelete={this.userCanEdit()}
+                  onClickDelete={id => this.props.promptDelete('photo', id)}
+                />
+              }
+            </MediaQuery>
           : null
         }
       </div>

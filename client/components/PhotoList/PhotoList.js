@@ -1,5 +1,4 @@
 import React from 'react';
-import cssModule from 'react-css-modules';
 import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import ActionDelete from 'material-ui/svg-icons/action/delete';
@@ -8,7 +7,7 @@ import styles from './PhotoList.css';
 const PhotoList = props => (
   <GridList
     cellHeight={200}
-    cols={3}
+    cols={props.rows}
     padding={8}
   >
     {props.photos.map(photo => (
@@ -34,12 +33,14 @@ PhotoList.propTypes = {
     url: React.PropTypes.string,
     caption: React.PropTypes.string,
   })),
+  rows: React.PropTypes.number,
   canDelete: React.PropTypes.bool,
   onClickDelete: React.PropTypes.func,
 };
 
 PhotoList.defaultProps = {
   canDelete: false,
+  rows: 3,
 };
 
-export default cssModule(PhotoList, styles);
+export default PhotoList;

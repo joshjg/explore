@@ -1,5 +1,4 @@
 import React from 'react';
-import cssModule from 'react-css-modules';
 import { List, ListItem } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import IconButton from 'material-ui/IconButton';
@@ -44,8 +43,8 @@ const EventList = props => (
           secondaryTextLines={2}
           rightIconButton={props.canDelete
             ? <IconButton onTouchTap={() => props.onClickDelete(event.id)}>
-              <ActionDelete />
-            </IconButton>
+                <ActionDelete />
+              </IconButton>
             : null
           }
         />
@@ -71,4 +70,4 @@ EventList.defaultProps = {
   canDelete: false,
 };
 
-export default cssModule(EventList, styles);
+export default EventList;

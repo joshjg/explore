@@ -1,5 +1,4 @@
-import { takeLatest } from 'redux-saga';
-import { call, put, fork } from 'redux-saga/effects';
+import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import {
   FETCH_LOCATIONS_REQUEST,
   FETCH_LOCATIONS_SUCCESS,

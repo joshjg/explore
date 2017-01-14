@@ -1,9 +1,8 @@
 import React from 'react';
-import cssModule from 'react-css-modules';
 import styles from './NoLogo.css';
 
 const NoLogo = () => (
-  <div styleName="root">
+  <div className={styles.root}>
     no logo
   </div>
 );
@@ -12,4 +11,4 @@ NoLogo.propTypes = {
 
 };
 
-export default cssModule(NoLogo, styles);
+export default NoLogo;

@@ -1,0 +1,12 @@
+.close {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  font-size: 32px;
+  color: rgba(0, 0, 0, 0.541176);
+  cursor: pointer;
+}
+
+.close:hover {
+  color: rgba(0, 0, 0, 0.75);
+}

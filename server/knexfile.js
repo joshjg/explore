@@ -2,6 +2,8 @@
 
 'use strict';
 
+require('dotenv').config();
+
 const path = require('path');
 
 module.exports = {
@@ -16,6 +18,8 @@ module.exports = {
   production: {
     client: 'pg',
     connection: {
+      host: '127.0.0.1',
+      port: '5432',
       database: 'exploremoco',
       user: 'exploremoco',
       password: process.env.DB_PASSWORD,

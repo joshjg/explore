@@ -14,7 +14,11 @@ let devtool;
 let plugins;
 
 if (process.env.NODE_ENV === 'staging') {
-  appEntry = [path.join(__dirname, 'client/index.js')];
+  appEntry = [
+    'babel-polyfill',
+    'whatwg-fetch',
+    path.join(__dirname, 'client/index.js'),
+  ];
   devtool = 'cheap-module-source-map';
   plugins = [
     new webpack.optimize.DedupePlugin(),

@@ -81,6 +81,7 @@ if (process.env.NODE_ENV === 'development') {
     console.log(chalk.green(`Dev server listening on port ${process.env.PORT}`))
   ));
 } else if (process.env.NODE_ENV === 'production') {
+  Model.knex(knex(knexfile.production));
   const server = express();
   const RedisStore = require('connect-redis')(session);
 

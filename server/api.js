@@ -1,5 +1,7 @@
 /* eslint-disable func-names, no-shadow, prefer-arrow-callback */
 
+require('dotenv').config();
+
 import * as objection from 'objection';
 import bcrypt from 'bcrypt';
 

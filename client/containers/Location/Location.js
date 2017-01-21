@@ -33,7 +33,7 @@ class Location extends React.Component {
     owners: React.PropTypes.arrayOf(React.PropTypes.number),
     name: React.PropTypes.string,
     description: React.PropTypes.string,
-    category: React.PropTypes.string,
+    categories: React.PropTypes.arrayOf(React.PropTypes.string),
     logo: React.PropTypes.string,
     lat: React.PropTypes.number,
     lng: React.PropTypes.number,
@@ -104,7 +104,11 @@ class Location extends React.Component {
               center={{ lat: this.props.lat, lng: this.props.lng }}
               zoom={14}
             >
-              <Marker lat={this.props.lat} lng={this.props.lng} />
+              <Marker
+                lat={this.props.lat}
+                lng={this.props.lng}
+                category={this.props.categories ? this.props.categories[0] : 'produce'}
+              />
             </GoogleMap>
           </div>
           {this.props.address && this.props.address.street
@@ -215,7 +219,7 @@ const mapStateToProps = state => ({
   owners: state.location.owners,
   name: state.location.name,
   description: state.location.description,
-  category: state.location.category,
+  categories: state.location.categories,
   logo: state.location.logo,
   lat: state.location.lat,
   lng: state.location.lng,

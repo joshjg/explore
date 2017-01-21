@@ -10,7 +10,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 import Logout from '../Logout';
 import { toggleActive } from '../App/actions';
-import logo from '../../assets/explore_logo_alt3.svg';
+import logo from '../../assets/explore_logo_alt5.svg';
 
 const Navbar = props => (
   <AppBar

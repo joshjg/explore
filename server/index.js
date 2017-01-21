@@ -4,9 +4,7 @@
 
 require('dotenv').config();
 
-if (process.env.NODE_ENV === 'production') {
-  require('babel-polyfill');
-}
+import 'babel-polyfill';
 
 import path from 'path';
 import express from 'express';
@@ -15,14 +13,11 @@ import chalk from 'chalk';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import session from 'express-session';
-import passport from 'passport';
 import knex from 'knex';
 import { Model } from 'objection';
 
 import knexfile from './knexfile';
-import passportConfig from './passportConfig';
-import registerApi from './api';
-import { userCanCreate } from './middleware';
+import api from './api';
 
 if (process.env.NODE_ENV === 'development') {
   const webpack = require('webpack');
@@ -47,17 +42,7 @@ if (process.env.NODE_ENV === 'development') {
     },
   }));
 
-  server.use(passport.initialize());
-  server.use(passport.session());
-  passportConfig(passport);
-
-  server.use('/s3', userCanCreate, require('react-s3-uploader/s3router')({
-    bucket: 'explorebucket01',
-    headers: { 'Access-Control-Allow-Origin': '*' },
-    ACL: 'private',
-  }));
-
-  registerApi(server, passport);
+  server.use(api);
 
   server.listen(process.env.API_PORT, () => (
     console.log(chalk.green(`API listening on port ${process.env.API_PORT}`))
@@ -102,20 +87,10 @@ if (process.env.NODE_ENV === 'development') {
     },
   }));
 
-  server.use(passport.initialize());
-  server.use(passport.session());
-  passportConfig(passport);
-
-  server.use('/api/s3', userCanCreate, require('react-s3-uploader/s3router')({
-    bucket: 'explorebucket01',
-    headers: { 'Access-Control-Allow-Origin': '*' },
-    ACL: 'private',
-  }));
-
+  server.use(api);
   server.use(historyApiFallback());
-  server.use('/', express.static(path.join(__dirname, '../build')));
   server.use('/api/', express.static(path.join(__dirname, 'public')));
-  registerApi(server, passport);
+  server.use('/', express.static(path.join(__dirname, '../build')));
 
   server.listen(process.env.PORT, () => (
     console.log(chalk.green(`Listening on port ${process.env.PORT}`))

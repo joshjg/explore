@@ -32,7 +32,7 @@ export default (passport) => {
   }, async function (email, password, done) {
     const users = await User
       .query()
-      .where('email', email);
+      .where('email', email.toLowerCase());
     const user = users[0];
     if (!user) {
       return done(null, false, { error: 'User not found.' });

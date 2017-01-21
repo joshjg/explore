@@ -11,6 +11,7 @@ const Signup = props => (
   <Dialog
     open
     title="Sign up"
+    autoScrollBodyContent
     actions={[
       <FlatButton
         label="Cancel"

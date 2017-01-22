@@ -83,7 +83,7 @@ if (process.env.NODE_ENV === 'development') {
     saveUninitialized: false,
     cookie: {
       secure: false,
-      maxAge: 600000,
+      maxAge: 1000 * 3600 * 24 * 30,
     },
   }));
 

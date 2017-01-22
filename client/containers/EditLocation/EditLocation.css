@@ -9,6 +9,18 @@
   padding: 40px;
 }
 
+@media (max-width: 800px) {
+  .root {
+    width: 90%;
+  }
+}
+
+@media (max-width: 360px) {
+  .root {
+    padding: 10px;
+  }
+}
+
 .col {
   flex: 1;
 }

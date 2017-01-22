@@ -89,7 +89,7 @@ if (process.env.NODE_ENV === 'development') {
 
   server.use(api);
   server.use(historyApiFallback());
-  server.use('/api/', express.static(path.join(__dirname, 'public')));
+  server.use('/public/', express.static(path.join(__dirname, 'public')));
   server.use('/', express.static(path.join(__dirname, '../build')));
 
   server.listen(process.env.PORT, () => (

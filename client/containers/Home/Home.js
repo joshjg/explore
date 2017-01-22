@@ -45,7 +45,7 @@ class Home extends React.Component {
           center={{ lat: 39.203255, lng: -77.256038 }}
           defaultZoom={11}
           onGoogleApiLoaded={({ map }) => {
-            map.data.loadGeoJson('/api/RDT.json');
+            map.data.loadGeoJson('/public/RDT.json');
             map.data.setStyle({
               fillColor: 'green',
               strokeWeight: 0,

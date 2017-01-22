@@ -7,6 +7,7 @@ import addPhoto from './containers/AddPhoto/reducer';
 import location from './containers/Location/reducer';
 import signup from './containers/Signup/reducer';
 import login from './containers/Login/reducer';
+import users from './containers/Users/reducer';
 
 export default {
   app,
@@ -18,4 +19,5 @@ export default {
   location,
   signup,
   login,
+  users,
 };

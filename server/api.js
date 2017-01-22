@@ -145,6 +145,22 @@ router.put(`${prefix}/locations/:id/photos`, async function (req, res) {
   res.json(photo); // TODO res already sent 404?
 });
 
+router.put(`${prefix}/users/:id`, async function (req, res) {
+  const user = await User
+    .query()
+    .findById(req.params.id);
+  if (!user) {
+    return res.status(404).send('Not found');
+  }
+  if (userIsAdmin(req.user)) {
+    const updatedUser = await User
+      .query()
+      .patchAndFetchById(req.params.id, req.body);
+    return res.json(updatedUser);
+  }
+  return res.status(403).send('Permission required');
+});
+
 
 /**
  * DELETE

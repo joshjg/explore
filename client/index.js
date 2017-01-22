@@ -22,6 +22,7 @@ import Login from './containers/Login';
 import Location from './containers/Location';
 import NewLocation from './containers/NewLocation';
 import EditLocation from './containers/EditLocation';
+import Users from './containers/Users';
 
 injectTapEventPlugin();
 
@@ -50,6 +51,7 @@ ReactDOM.render(
           <Route path="locations/:id" component={Location} />
           <Route path="newlocation" component={NewLocation} onEnter={api.userCanCreate} />
           <Route path="about" component={About} />
+          <Route path="users" component={Users} />
           <Redirect from="*" to="/" />
         </Route>
       </Router>

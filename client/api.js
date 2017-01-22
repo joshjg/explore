@@ -26,6 +26,13 @@ export default {
       .then(res => res.json())
   ),
 
+  fetchUsers: () => (
+    fetch('/api/users', {
+      credentials: 'same-origin',
+    })
+      .then(res => res.json())
+  ),
+
   putNewLocation: data => (
     fetch('/api/locations', {
       method: 'PUT',
@@ -60,6 +67,16 @@ export default {
       method: 'PUT',
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' },
+    })
+      .then(res => res.json())
+  ),
+
+  putUser: (id, data) => (
+    fetch(`/api/users/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin',
     })
       .then(res => res.json())
   ),

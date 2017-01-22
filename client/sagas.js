@@ -10,6 +10,7 @@ import addPhoto from './containers/AddPhoto/sagas';
 import signup from './containers/Signup/sagas';
 import login from './containers/Login/sagas';
 import logout from './containers/Logout/sagas';
+import users from './containers/Users/sagas';
 
 export default function* root() {
   yield [
@@ -23,5 +24,6 @@ export default function* root() {
     fork(signup),
     fork(login),
     fork(logout),
+    fork(users),
   ];
 }

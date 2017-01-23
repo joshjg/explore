@@ -55,6 +55,10 @@ if (process.env.NODE_ENV === 'development') {
         target: `http://localhost:${process.env.API_PORT}`,
         pathRewrite: { '^/api': '' },
       },
+      '/public/**': {
+        target: `http://localhost:${process.env.API_PORT}`,
+        pathRewrite: { '^/public': '' },
+      },
     },
     hot: true,
     historyApiFallback: true,

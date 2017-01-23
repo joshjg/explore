@@ -10,6 +10,34 @@ import MediaQuery from 'react-responsive';
 import styles from './FilterPanel.css';
 import { categories } from '../../constants';
 
+import animals from '../../assets/markers/animals.svg';
+import art from '../../assets/markers/art.svg';
+import csa from '../../assets/markers/csa.svg';
+import food from '../../assets/markers/food.svg';
+import history from '../../assets/markers/history.svg';
+import lodging from '../../assets/markers/lodging.svg';
+import outdoors from '../../assets/markers/outdoors.svg';
+import pickyourown from '../../assets/markers/pick-your-own.svg';
+import plants from '../../assets/markers/plants.svg';
+import produce from '../../assets/markers/produce.svg';
+import shopping from '../../assets/markers/shopping.svg';
+import vineyard from '../../assets/markers/vineyard.svg';
+
+const markers = {
+  animals,
+  art,
+  csa,
+  food,
+  history,
+  lodging,
+  outdoors,
+  'pick-your-own': pickyourown,
+  plants,
+  produce,
+  shopping,
+  vineyard,
+};
+
 const FilterPanel = ({ values, onCheck, onClickClose, ...others }) => (
   <Paper {...others}>
     <div
@@ -28,6 +56,12 @@ const FilterPanel = ({ values, onCheck, onClickClose, ...others }) => (
             <Checkbox
               checked={values[cat]}
               onCheck={(e, isChecked) => onCheck(cat, isChecked)}
+            />
+          }
+          rightIcon={
+            <img
+              src={markers[cat]}
+              alt=""
             />
           }
         />

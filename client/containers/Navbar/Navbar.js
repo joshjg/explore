@@ -17,7 +17,9 @@ const Navbar = props => (
     title=""
     iconElementLeft={(
       <Link to="/">
-        <img src={logo} height={50} alt="logo" />
+        <div style={{ height: '50px' }}>
+          <img src={logo} style={{ height: '100%', maxHeight: '100%' }} alt="logo" />
+        </div>
       </Link>
     )}
     iconStyleLeft={{ marginLeft: '30px' }}

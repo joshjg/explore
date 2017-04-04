@@ -15,6 +15,7 @@ import { EDIT_LOCATION_SUCCESS } from '../EditLocation/constants';
 const reducer = (state = {
   signup: false,
   login: false,
+  welcome: false,
   addEvent: false,
   addPhoto: false,
   snackbar: {

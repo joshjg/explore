@@ -10,7 +10,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 import Logout from '../Logout';
 import { toggleActive } from '../App/actions';
-import logo from '../../assets/explore_logo_alt5.svg';
+import logo from '../../assets/explore_logo_alt5.png';
 
 const Navbar = props => (
   <AppBar
@@ -31,6 +31,10 @@ const Navbar = props => (
         targetOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
       >
+        <MenuItem
+          primaryText="Welcome"
+          onTouchTap={() => props.toggleActive('welcome')}
+        />
         {props.isLoggedIn
           ? <MenuItem
             primaryText="New location"
@@ -54,12 +58,8 @@ const Navbar = props => (
 );
 
 Navbar.propTypes = {
-  isLoggedIn: React.PropTypes.bool,
-  toggleActive: React.PropTypes.func,
-};
-
-Navbar.defaultProps = {
-
+  isLoggedIn: React.PropTypes.bool.isRequired,
+  toggleActive: React.PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

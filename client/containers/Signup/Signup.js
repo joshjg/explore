@@ -10,7 +10,7 @@ import { signupRequest, setSignupField } from './actions';
 const Signup = props => (
   <Dialog
     open
-    title="Sign up"
+    title="Sign up to manage your location"
     autoScrollBodyContent
     actions={[
       <FlatButton
@@ -26,6 +26,7 @@ const Signup = props => (
             || props.email.search(/@/) < 1 // loosely enforce 'valid' address
             || !props.password
             || props.password.length < 8 // enforce min length of 8
+            || props.password !== props.passwordAgain
           )
           ? props.handleChange('missingField', true)
           : props.handleSubmit(props.email, props.password)
@@ -55,12 +56,24 @@ const Signup = props => (
         : null
       }
     />
+    <TextField
+      value={props.passwordAgain || ''}
+      onChange={e => props.handleChange('passwordAgain', e.target.value.trim())}
+      floatingLabelText="Re-enter password"
+      type="password"
+      style={{ display: 'block' }}
+      errorText={(props.missingField && (props.password !== props.passwordAgain))
+        ? 'Password must match'
+        : null
+      }
+    />
   </Dialog>
 );
 
 Signup.propTypes = {
   email: React.PropTypes.string,
   password: React.PropTypes.string,
+  passwordAgain: React.PropTypes.string,
   missingField: React.PropTypes.bool,
   error: React.PropTypes.string, // submission errors
   toggleActive: React.PropTypes.func,
@@ -71,6 +84,7 @@ Signup.propTypes = {
 const mapStateToProps = state => ({
   email: state.signup.email,
   password: state.signup.password,
+  passwordAgain: state.signup.passwordAgain,
   missingField: state.signup.missingField,
   error: state.signup.error,
 });

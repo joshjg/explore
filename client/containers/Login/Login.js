@@ -34,6 +34,7 @@ const Login = props => (
       value={props.email || ''}
       onChange={e => props.handleChange('email', e.target.value.trim())}
       floatingLabelText="Email address"
+      type="email"
       style={{ display: 'block' }}
       errorText={(props.missingField && !props.email) ? 'This field is required' : null}
     />

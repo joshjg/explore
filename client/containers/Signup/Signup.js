@@ -39,6 +39,7 @@ const Signup = props => (
       value={props.email || ''}
       onChange={e => props.handleChange('email', e.target.value.trim())}
       floatingLabelText="Email address"
+      type="email"
       style={{ display: 'block' }}
       errorText={(props.missingField && (!props.email || props.email.search(/@/) < 1))
         ? 'Valid email address required'

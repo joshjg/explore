@@ -16,8 +16,9 @@ const router = express.Router();
 const userIsOwner = (user, location) => (
   !!user
     && !!location
-    && !!location.owners
-    && location.owners.indexOf(user.id) !== -1
+    && !!location[0]
+    && !!location[0].owners
+    && location[0].owners.indexOf(user.id) !== -1
 );
 
 const userIsAdmin = user => (user && user.admin);
@@ -43,7 +44,7 @@ router.post(`${prefix}/signup`, async function (req, res, next) {
   }
   const existingUser = await User
     .query()
-    .where('email', req.body.email)
+    .where('email', req.body.email.toLowerCase())
     .catch(err => console.error(err));
   if (existingUser.length) {
     return res.status(403).send('User already exists');
@@ -52,7 +53,7 @@ router.post(`${prefix}/signup`, async function (req, res, next) {
   const newUser = await User
     .query()
     .insert({
-      email: req.body.email,
+      email: req.body.email.toLowerCase(),
       password: hash,
       admin: false,
       canCreate: false,

@@ -74,7 +74,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   requestUsers: () => dispatch({ type: FETCH_USERS_REQUEST }),
   handleChange: (id, field, value) => dispatch(setUserField(id, field, value)),
-  editUser: (id, email, canCreate) => dispatch(putUser(id, email, !!canCreate)),
+  editUser: (id, email, canCreate) => dispatch(putUser(id, email.toLowerCase(), !!canCreate)),
 });
 
 export default connect(

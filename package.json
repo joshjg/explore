@@ -6,7 +6,9 @@
     "start": "babel-node server/index.js",
     "build": "rm -rf build/ && NODE_ENV=staging webpack --config webpack.config.js",
     "compile": "rm -rf dist/ && babel server --out-dir dist --copy-files --presets modern-node,stage-0",
-    "lint": "eslint --ignore-path .gitignore client server"
+    "lint": "eslint --ignore-path .gitignore client server",
+    "make-migration": "cd server && knex migrate:make",
+    "migrate-latest": "cd server && knex migrate:latest"
   },
   "repository": {
     "type": "git",

@@ -5,6 +5,10 @@
   top: -40px;
 }
 
+.tooltip {
+  max-width: 250px;
+}
+
 .marker {
 
 }

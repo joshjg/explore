@@ -47,6 +47,7 @@ const Marker = props => (
           <ReactTooltip
             id={props.location.id.toString()}
             effect="solid"
+            className={styles.tooltip}
           >
             <h3>{props.location.name}</h3>
             <p>{props.location.description}</p>
